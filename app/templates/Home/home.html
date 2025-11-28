@@ -1,0 +1,251 @@
+{% extends 'index.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero-section d-flex align-items-center justify-content-center text-center" id="Hero-section">
+    <div class="container">
+        <h1 class="display-4 fw-bold" style="color: #F2C14E;">نبني جيلا واعيا قادر على قيادة المستقبل</h1>
+        <p class="lead mt-3" style="color: white;">في عالمٍ يتسارع فيه التطور، يحتاج الطلاب إلى أكثر من مجرد معلومات، بل إلى وعيٍ أعمق. وعيٌ بأنفسهم، وخياراتهم، وبيئتهم، والعالم من حولهم. أُطلقت مبادرتنا لتمكين الطلاب و تنمية وعيهم و اكسابهم من المعرفة والفهم والعقلية ما يلزم لمواجهة تحديات الحياة بثقةٍ ومسؤولية.</p>
+        <a href="#awareness-topics" class="btn btn-outline-warning">المزيد</a>
+    </div>
+</section>
+
+<!-- Vision Section -->
+<section class="pt-5 mt-1 pb-5 mb-1" id="vision" style="background-color: #0A3D62;">
+  <div class="container">
+    <div class="d-flex justify-content-center">
+
+      <!-- Text Right -->
+      <div class="col-md-6">
+        <h2 class="fw-bold text-center" style="color: #F2C14E;">رؤية المبادرة</h2>
+        <p class=" text-center" style="color: white;">
+          بناء جيل واعي قادر على النقد و التحليل و التكيف الايجابي مع التغيرات المحلية و العالمية و مواكبة التطور التكنولوجي و مدرك لحقوقه وواجباته و قادر على مواجهة التحديات المستقبلية.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-5 mt-1" id="awareness-topics" style="background-color: #F2C14E;">
+  <div class="container pb-5">
+    <h2 class="text-center mb-4 fw-bold mt-5" style="color: #0A3D62;">ابعاد الوعي</h2>
+    <p class="text-center mb-5 text-muted">
+      نساعد الطلاب على النمو من خلال المعرفة والوضوح واتخاذ القرارات المسؤولة.
+    </p>
+
+    <div class="row g-4">
+
+      <!-- Card 1 -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+        <img src="{{ url_for('static', filename='img/scientific_card.png') }}" class="card-img-top" alt="Digital Safety" style="height: 200px;">
+          <div class="card-body text-center">
+            <i class="bi bi-mortarboard fs-1 mb-3" style="color: #e81717;"></i>
+            <h5 class="card-title fw-bold">الوعي العلمي</h5>
+            <p class="card-text text-muted">
+              الوعي العلمي يعد من اهم ابعاد الوعي فهو يتمثل في كيفية استغلال المواد العلمية و توظيفيها ف حياتنا العملية
+            </p>
+            <a href="{{url_for('awareness', type='علمي')}}" class="btn btn-outline-primary">اقرا المزيد</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+        <img src="{{ url_for('static', filename='img/environmental_card.png') }}" class="card-img-top" alt="Digital Safety" style="height: 200px;">
+          <div class="card-body text-center">
+            <i class="bi bi-tree fs-1 mb-3" style="color: #5bd614c6;"></i>
+            <h5 class="card-title fw-bold">الوعي البيئي</h5>
+            <p class="card-text text-muted">
+              الوعي البيئي و الحفاظ على الركن الاخضر اصبح مسؤولية على كل فرد في المجتمع
+            </p>
+            <a href="{{url_for('awareness', type='بيئي')}}" class="btn btn-outline-primary">اقرا المزيد</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+        <img src="{{ url_for('static', filename='img/Digital_card.png') }}" class="card-img-top" alt="Digital Safety" style="height: 200px;">
+          <div class="card-body text-center">
+            <i class="bi bi-laptop fs-1 mb-3" style="color: #0091ff;"></i>
+            <h5 class="card-title fw-bold">الوعي الرقمي</h5>
+            <p class="card-text text-muted">
+              الاستخدام الامثل للتكنولوجيا يجعلك مميز و حماية بياناتك بنفس اهمية حماية املاكك
+            </p>
+            <a href="{{url_for('awareness', type='رقمي')}}" class="btn btn-outline-primary">اقرا المزيد</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <img src="{{ url_for('static', filename='img/social_card.png') }}" class="card-img-top" alt="Digital Safety" style="height: 200px;">
+          <div class="card-body text-center">
+            <i class="bi bi-lightbulb fs-1 text-warning mb-3"></i>
+            <h5 class="card-title fw-bold">الوعي الاجتماعي</h5>
+            <p class="card-text text-muted">
+              المهرات التقنية مهمة لاكن بدون مهارات التواصل و العمل الجماعي لن تستطيع تحقيق اهدافك
+            </p>
+            <a href="{{url_for('awareness', type='اجتماعي')}}" class="btn btn-outline-primary">اقرا المزيد</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <img src="{{ url_for('static', filename='img/cultural_card.png') }}" class="card-img-top" alt="Digital Safety" style="height: 200px;">
+            <div class="card-body text-center">
+                <i class="bi bi-book fs-1 mb-3" style="color: #9f690d;"></i>
+                <h5 class="card-title fw-bold">الوعي الثقافي</h5>
+                <p class="card-text text-muted">
+                    معرفة تراث بلدك و حضارتك هو سر شخصيتك و هويتك
+                </p>
+                <a href="{{url_for('awareness', type='ثقافي')}}" class="btn btn-outline-primary">اقرا المزيد</a>
+            </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+        <img src="{{ url_for('static', filename='img/sports_card.png') }}" class="card-img-top" alt="Digital Safety" style="height: 200px;">
+          <div class="card-body text-center">
+            <i class="bi bi-award fs-1 mb-3" style="color: #d2ed7a;"></i>
+            <h5 class="card-title fw-bold">الوعي الرياضي</h5>
+            <p class="card-text text-muted">
+              الحياة الصحية الجيدة المملوءة بالنشاطات و العادات الصحية المختلفة لها عامل فعال في تحقيق اهدافك
+            </p>
+            <a href="{{url_for('awareness', type='رياضي')}}" class="btn btn-outline-primary">اقرا المزيد</a>
+          </div>
+        </div>
+      </div>
+    </div> <!-- row -->
+  </div> <!-- container -->
+</section>
+ 
+<section class="py-5 mt-1" id="progress" style="background-color: #0A3D62;">
+  <div class="container text-center mt-5">
+
+    <h2 class="fw-bold mb-4" style="color: #F2C14E;">اهدافنا</h2>
+    <p class="mb-5" style="color: white;">ما استطعنى تحقيقه من اهداف حتى الان</p>
+
+    <div class="row g-4">
+
+      <!-- Workshops -->
+      <div class="col-md-3 col-6">
+        <div class="p-3 border rounded">
+          <h3 class="fw-bold" style="color: #F2C14E;">10+</h3>
+          <p style="color: white;">ورشة عمل</p>
+        </div>
+      </div>
+
+      <!-- Students -->
+      <div class="col-md-3 col-6">
+        <div class="p-3 border rounded">
+          <h3 class="fw-bold" style="color: #F2C14E;">190+</h3>
+          <p style="color: white;">طالب مشارك</p>
+        </div>
+      </div>
+
+      <!-- Seminars -->
+      <div class="col-md-3 col-6">
+        <div class="p-3 border rounded">
+          <h3 class="fw-bold" style="color: #F2C14E;">24+</h3>
+          <p style="color: white;">ندوة عقدت</p>
+        </div>
+      </div>
+
+      <!-- Articles / Blog Posts -->
+      <div class="col-md-3 col-6">
+        <div class="p-3 border rounded">
+          <h3 class="fw-bold" style="color: #F2C14E;">15+</h3>
+          <p style="color: white;">بحوث منتدى الطلاب</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<div class="text-center mt-5 pb-4">
+    <a href="{{url_for('progress')}}" class="btn btn-outline-warning px-4 mt-2">المزيد</a>
+</div>
+</section>
+
+<section class="py-5 mt-1" id="feature" style="background-color: #F2C14E;">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- Image Left -->
+      <div class="col-md-6">
+        <img src="{{ url_for('static', filename='img/logo_2.png') }}" class="img-fluid ms-5" alt="Feature Image" width="400px">
+      </div>
+
+      <!-- Text Right -->
+      <div class="col-md-6">
+        <h2 class="fw-bold" style="color: #0A3D62;">اتحاد طلاب مدرسة جمال عبد الناصر العسكرية</h2>
+        <p class="text-muted">
+          يمثل اتحاد طلاب مدرسة جمال عبد الناصر الطلاب ويمكّنهم، ويمنحهم صوتًا في الحياة المدرسية. ننظم فعاليات وورش عمل وحملات توعية لتعزيز القيادة والإبداع والمشاركة المجتمعية، مما يساعد الطلاب على النمو أكاديميًا واجتماعيًا وشخصيًا.
+        </p>
+        <a href="#awareness-topics" class="btn btn-outline-primary">مزيد</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="py-5 mt-1" style="background-color:#0A3D62;">
+  <div class="container">
+
+    <h2 class="fw-bold text-center mb-4" style="color:#F2C14E;">عن المبادرة</h2>
+    <p class="text-center mb-5" style="color: white;">
+      من نحن و مذا نفعل و كيفية التواصل معنا
+    </p>
+
+    <div class="row g-4">
+
+      <!-- TEAM -->
+      <div class="col-md-4">
+        <a href="{{url_for('team')}}" class="about-card text-decoration-none">
+          <div class="p-4 rounded shadow-sm h-100 text-center card-btn" style="background-color: #F2C14E;">
+            <i class="bi bi-people-fill" style="font-size:3rem;"></i>
+            <h4 class="fw-bold mt-3" style="color:#0A3D62;">فريق العمل</h4>
+            <p class=" mt-2" style="color: white;">
+              فريق العمل القائم على المبادرة
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <!-- WHO WE ARE -->
+      <div class="col-md-4">
+        <a href="#" class="about-card text-decoration-none">
+          <div class="p-4 rounded shadow-sm h-100 text-center card-btn" style="background-color: #F2C14E;">
+            <i class="bi bi-lightbulb-fill" style="font-size:3rem; color:#0A3D62;"></i>
+            <h4 class="fw-bold mt-3" style="color:#0A3D62;">من نحن</h4>
+            <p class=" mt-2" style="color: white;">
+              مبادرة مدرسية لنشر الوعي و المعرفة بين الطلاب
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="col-md-4">
+        <a href="{{url_for('contact')}}" class="about-card text-decoration-none">
+          <div class="p-4 rounded shadow-sm h-100 text-center card-btn" style="background-color: #F2C14E;">
+            <i class="bi bi-envelope-fill" style="font-size:3rem; color:#0A3D62;"></i>
+            <h4 class="fw-bold mt-3" style="color:#0A3D62;">تواصل معنا</h4>
+            <p class=" mt-2" style="color: white;">
+              تواصل معنا لتلقي المساعدة او المشاركة في المبادرة
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

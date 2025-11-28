@@ -1,0 +1,133 @@
+.hero-section {
+    height: 100vh;                     /* full viewport height */
+    background-image: url("/static/img/Hero.png");
+    background-size: cover;             /* cover whole section */
+    background-position: center;        /* center the image */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Dark overlay for readability */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);   /* dark overlay */
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;                        /* text above overlay */
+}
+
+.awareness-section {
+    height: 100vh;                     
+    background-size: cover;             
+    background-position: center;        
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Dark overlay for readability */
+.awareness-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+/* Text above overlay */
+.awareness-section .position-relative {
+    z-index: 2;
+}
+
+/* Minimal custom styling - using Bootstrap utility classes primarily */
+    .bg-yellow {
+      background-color: #F2C14E;
+    }
+    
+    .bg-navy {
+      background-color: #0A3D62;
+    }
+    
+    .text-navy {
+      color: #0A3D62;
+    }
+    
+    .text-yellow {
+      color: #F2C14E;
+    }
+    
+    .border-yellow {
+      border-color: #F2C14E !important;
+    }
+    
+    .border-navy {
+      border-color: #0A3D62 !important;
+    }
+
+.about-card .card-btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.about-card .card-btn:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.alert-fixed {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px;        /* adjust to match your card */
+    z-index: 9999;
+}
+
+.profile-card {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background: #fff;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #F2C14E; /* golden border */
+            object-fit: cover;
+        }
+        .stats .stat {
+            text-align: center;
+        }
+        .stats .stat h5 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .stats .stat p {
+            color: gray;
+            margin: 0;
+        }
+
+.card_anim {
+    background-color: #0A3D62;
+}
+
+.card_anim:hover {
+    background-color: #09558a;
+}
+
+.admin-card-anim {
+    background-color: white;
+}
+
+.admin-card-anim:hover {
+    background-color: rgb(164, 164, 164);
+}

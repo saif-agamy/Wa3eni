@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+{% block title %}Post{% endblock %}
+
+{% block content %}
+<section class="mt-5 pt-3" style="min-height: 700px; background-color: #F2C14E;">
+    <div class="container my-4">
+        <div class="card" style="background-color: #0A3D62;">
+            <!-- TOP SECTION -->
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="mb-0 h2" style="color: #F2C14E;">{{post.title}}</h5>
+                    <small class="d-block" style="color: white;"><span style="color: #F2C14E;">By:</span><a href="{{url_for('profile', id=author.id)}}" style="color: white;"> {{author.username}}</a></small>
+                    <small class="d-block" style="color: white;"><span style="color: #F2C14E;">Category:</span> {{post.category}}</small>
+                    <small class="d-block" style="color: white;"><span style="color: #F2C14E;">date:</span> {{post.date.strftime('%Y-%m-%d')}}</small>
+                </div>
+
+                <div>
+                    <button class="btn btn-primary d-block" hx-post="{{url_for('upvote', id=post.id)}}" hx-target="#upvotes-btn-{{post.id}}" hx-swap="outerHTML">
+                        <span style="color: white;" id="upvotes-btn-{{post.id}}">{{upvotes}} Upvotes</span>
+                    </button>
+                    
+                    {% if post.author_id == current_user.id %}
+                        <a href="{{url_for('delete_post', id=post.id)}}" class="btn btn-sm btn-danger fs-6 d-block mt-2">delete</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- CONTENT SECTION -->
+            <div class="card-body">
+                <p style="color: white;">
+                    {{post.content}}
+                </p>
+            </div>
+
+            <!--comments section-->
+            <div class="card-footer">
+                <h6 class="mb-3" style="color: #F2C14E;">Comments</h6>
+
+                <!-- Add Comment Form -->
+                <form id="add-comment-form" class="d-flex mb-3" method="POST" action="{{ url_for('comment', id=post.id) }}">
+                    <input 
+                        type="text" 
+                        name="content" 
+                        class="form-control me-2" 
+                        placeholder="Write a comment..." 
+                        required
+                    >
+                    <button type="submit" class="btn btn-sm btn-outline-success">Add Comment</button>
+                </form>
+
+                <!-- Existing Comments -->
+                <div id="comments-list">
+                    {% if post.comments %}
+                        {% for comment in post.comments %}
+                            <div class="mb-2 p-2 border rounded d-flex justify-content-between">
+                                <span style="color: white;"><strong style="color: #F2C14E;">{{ comment.user }}:</strong> {{ comment.content }}</span>
+                                {% if comment.user == current_user.username or post.author_id == current_user.id %}
+                                <a href="{{url_for('comment_delete', id=post.id, comment_index=loop.index0)}}" class="btn btn-sm btn-danger d-block">delete</a>
+                                {% endif %}
+                            </div>
+                            
+                        {% endfor %}
+                    {% else %}
+                        <div class="mb-2 p-2 text-danger">
+                            There are no comments on this post
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+    <a href="{{url_for('blog')}}" class="btn btn-sm btn-success mb-5 fs-5 rounded">Back to blog</a>
+    </div>
+</section>
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+{% endblock %}

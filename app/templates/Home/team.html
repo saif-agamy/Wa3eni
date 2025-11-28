@@ -1,0 +1,123 @@
+{% extends 'index.html' %}
+{% block title %}Our Team{% endblock %}
+
+{% block content %}
+<section class="py-5 mt-5" style="background-color: #F2C14E;">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5" style="color: #0A3D62;">Meet Our Team</h2>
+
+    <!-- Row 1: Top (1 person) -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-3 col-6">
+        <div class="card h-100 text-center shadow-sm team-card" style="background-color: #0A3D62;">
+          <img src="{{ url_for('static', filename='img/team1.jpg') }}" class="card-img-top" alt="Member 1">
+          <div class="card-body">
+            <h5 class="card-title fw-bold" style="color: #F2C14E;">Leader</h5>
+            <p style="color: white;">Project Head</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: 2 people -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-3 col-6">
+        <div class="card h-100 text-center shadow-sm team-card" style="background-color: #0A3D62;">
+          <img src="{{ url_for('static', filename='img/team2.jpg') }}" class="card-img-top" alt="Member 2">
+          <div class="card-body">
+            <h5 class="card-title fw-bold" style="color: #F2C14E;">Coordinator 1</h5>
+            <p style="color: white;">Events</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="card h-100 text-center shadow-sm team-card" style="background-color: #0A3D62;">
+          <img src="{{ url_for('static', filename='img/team3.jpg') }}" class="card-img-top" alt="Member 3">
+          <div class="card-body">
+            <h5 class="card-title fw-bold" style="color: #F2C14E;">Coordinator 2</h5>
+            <p style="color: white;">Content</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: 5 people -->
+    <div class="row justify-content-center mb-4 w-100"> 
+      <div class="col-md-2 col-6 mb-3">
+        <div class="card h-100 text-center shadow-sm team-card" style="background-color: #0A3D62;">
+          <img src="{{ url_for('static', filename='img/Yahia.png') }}" class="card-img-top" alt="Member {{i}}">
+          <div class="card-body">
+            <h5 class="card-title fw-bold" style="color: #F2C14E;">Yahia Ashraf</h5>
+            <p style="color: white;">مقرر اللجنة الاجتماعية</p>
+          </div>
+        </div>
+      </div>           
+      <div class="col-md-2 col-6 mb-3">
+        <div class="card h-100 text-center shadow-sm team-card" style="background-color: #0A3D62;">
+          <img src="{{ url_for('static', filename='img/abdelrahman.png') }}" class="card-img-top" alt="Member {{i}}">
+          <div class="card-body">
+            <h5 class="card-title fw-bold" style="color: #F2C14E;">Abdel-rahman Kamal</h5>
+            <p style="color: white;">ممقرر اللجنة الثقافية</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 col-6 mb-3">
+        <div class="card h-100 text-center shadow-sm team-card" style="background-color: #0A3D62;">
+          <img src="{{ url_for('static', filename='img/saifagamy 2.png') }}" class="card-img-top" alt="Member {{i}}">
+          <div class="card-body">
+            <h5 class="card-title fw-bold" style="color: #F2C14E;">Saif Agamy</h5>
+            <p style="color: white;">مقرر اللجنة العلمية</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 col-6 mb-3">
+        <div class="card h-100 text-center shadow-sm team-card" style="background-color: #0A3D62;">
+          <img src="{{ url_for('static', filename='img/ziad.png') }}" class="card-img-top" alt="Member {{i}}">
+          <div class="card-body">
+            <h5 class="card-title fw-bold" style="color: #F2C14E;">Ziad Mohamed</h5>
+            <p style="color: white;">مقرر اللجنة الفنية</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 col-6 mb-3">
+        <div class="card h-100 text-center shadow-sm team-card" style="background-color: #0A3D62;">
+          <img src="{{ url_for('static', filename='img/Mohamed.png') }}" class="card-img-top" alt="Member {{i}}">
+          <div class="card-body">
+            <h5 class="card-title fw-bold" style="color: #F2C14E;">Mohamed Ali</h5>
+            <p style="color: white;">مقرر اللجنة الرياضية</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Row 4: 3 people -->
+    <div class="row justify-content-center mb-4">
+      {% for i in range(9, 12) %}
+      <div class="col-md-3 col-6 mb-3">
+        <div class="card h-100 text-center shadow-sm team-card" style="background-color: #0A3D62;">
+          <img src="{{ url_for('static', filename='img/team' ~ i ~ '.jpg') }}" class="card-img-top" alt="Member {{i}}">
+          <div class="card-body">
+            <h5 class="card-title fw-bold" style="color: #F2C14E;">Member {{i}}</h5>
+            <p style="color: white;">Team Member</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div> <!-- container -->
+</section>
+
+<style>
+.team-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+</style>
+{% endblock %}

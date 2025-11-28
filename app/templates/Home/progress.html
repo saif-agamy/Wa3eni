@@ -1,0 +1,112 @@
+{% extends 'index.html' %}
+{% block title %}progress{% endblock %}
+
+{% block content %}
+<!-- Seminars Section -->
+<section class="py-5 bg-yellow" id="seminars">
+  <div class="container mt-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-navy pb-3 border-bottom border-navy border-3 d-inline-block">Our Seminars</h2>
+    </div>
+
+    <!-- Seminar 1 -->
+    <div class="row align-items-center mb-5 g-4">
+      <div class="col-md-6 order-md-1">
+        <div class="card border-0 bg-transparent h-100">
+          <div class="card-body p-4">
+            <h3 class="fw-bold text-navy mb-4 pb-2 border-bottom border-navy border-2 d-inline-block">Science Seminar</h3>
+            <p class="text-secondary fs-5 lh-lg">
+              We organized a seminar on science, teaching students how to improve their science skills, learn more and fast, and avoid being outdated.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 order-md-2">
+        <div class="p-3 bg-white rounded-4 shadow-lg">
+          <img src="{{ url_for('static', filename='img/Science_seminar.png') }}" class="img-fluid rounded-3" alt="Science Seminar" style="max-height: 350px; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Seminar 2 -->
+    <div class="row align-items-center mb-5 g-4">
+      <div class="col-md-6 order-md-2">
+        <div class="card border-0 bg-transparent h-100">
+          <div class="card-body p-4">
+            <h3 class="fw-bold text-navy mb-4 pb-2 border-bottom border-navy border-2 d-inline-block">Health Awareness Seminar</h3>
+            <p class="text-secondary fs-5 lh-lg">
+              Focused on mental and physical health, this seminar helped students understand the importance of a balanced lifestyle.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 order-md-1">
+        <div class="p-3 bg-white rounded-4 shadow-lg">
+          <img src="{{ url_for('static', filename='img/health.png') }}" class="img-fluid rounded-3" alt="Health Awareness Seminar" style="max-height: 350px; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Seminar 3 -->
+    <div class="row align-items-center mb-5 g-4">
+      <div class="col-md-6 order-md-1">
+        <div class="card border-0 bg-transparent h-100">
+          <div class="card-body p-4">
+            <h3 class="fw-bold text-navy mb-4 pb-2 border-bottom border-navy border-2 d-inline-block">Moral Seminar</h3>
+            <p class="text-secondary fs-5 lh-lg">
+              We taught students how to behave in a moral way, don't hurt others by bullying, and respect other people especially if they are older than you and of course combat bad habits.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 order-md-2">
+        <div class="p-3 bg-white rounded-4 shadow-lg">
+          <img src="{{ url_for('static', filename='img/moral_seminar.png') }}" class="img-fluid rounded-3" alt="Moral Seminar" style="max-height: 350px; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Seminar 4 -->
+    <div class="row align-items-center mb-5 g-4">
+      <div class="col-md-6 order-md-2">
+        <div class="card border-0 bg-transparent h-100">
+          <div class="card-body p-4">
+            <h3 class="fw-bold text-navy mb-4 pb-2 border-bottom border-navy border-2 d-inline-block">Rumors seminar</h3>
+            <p class="text-secondary fs-5 lh-lg">
+              Focused on mental and physical health, this seminar helped students understand the importance of a balanced lifestyle.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 order-md-1">
+        <div class="p-3 bg-white rounded-4 shadow-lg">
+          <img src="{{ url_for('static', filename='img/Wars_seminar.png') }}" class="img-fluid rounded-3" alt="Health Awareness Seminar" style="max-height: 350px; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Student participation Section -->
+<section class="py-5 bg-navy mt-1" id="workshops">
+  <div class="container mt-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-yellow pb-3 border-bottom border-yellow border-3 d-inline-block">Students Participation</h2>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col-md">
+        <div class="card bg-transparent border-yellow border-2 h-100 shadow-lg">
+          <div class="card-body p-5">
+            <h3 class="fw-bold text-yellow mb-4">Achievement</h3>
+            <p class="text-white fs-5 lh-lg">
+              More than <span class="badge bg-yellow text-navy fs-6 px-3 py-2">190 students</span> from First, Second and Third Secondary classes over Gamal Abdel Nasser school participated in our programs! Not just to participate but to change their mind, lifestyle, or make any difference in their personality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

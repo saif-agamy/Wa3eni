@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+{% block title %}{{user.username}}{% endblock %}
+
+{% block content %}
+<section class=" pt-5 pb-3 d-flex justify-content-center" style="background-color: #F2C14E;">
+    <div class="d-flex justify-content-center">
+    <div class="profile-card mx-3" style="background-color: #0A3D62; max-width: 1000px; width: 100%;">
+        <!-- Profile Header -->
+        <div class="text-center mb-4 mx-5 px-5">
+            <img src="{{ url_for('static', filename=user.img_url) }}" alt="Profile Picture" class="profile-img mb-3 ">
+            <h3 class="fw-bold" style="color: #F2C14E;">{{ user.username }}</h3>
+            <p style="color: white;">{{ user.position }}</p>
+            <p style="color: #F2C14E;">{{ user.email }}</p>
+            <p style="color: #F2C14E;">+20-{{ user.phone }}</p>
+        </div>
+
+        <!-- User Stats -->
+        <div class="row stats mb-4">
+            <div class="col stat">
+                <h5 style="color: #F2C14E;">{{ user.age }}</h5>
+                <p style="color: white;">العمر</p>
+            </div>
+            <div class="col stat">
+                <h5 style="color: #F2C14E;">{{ user.posts_num }}</h5>
+                <p style="color: white;">المنشورات</p>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="mb-4">
+            <h5 style="color: #F2C14E;">عن الشخص</h5>
+            <p style="color: white;">{{ user.about }}</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="text-center">
+            {% if current_user.id == user.id %}
+            <a href="#" class="btn btn-warning me-2">تعديل</a>
+            {% endif %}
+            <a href="{{ url_for('home') }}" class="btn btn-outline-secondary me-2">عودة للرئيسية</a>
+            {% if current_user.id == user.id %}
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">تسجيل خروج</a>
+            {% endif %}
+        </div>
+
+        <!-- User Posts Section -->
+        <div class="mt-4">
+            <h5 style="color: #F2C14E;" class="mb-3">منشوراتي</h5>
+            {% for post in posts %}
+                <div class="card mt-3">
+                    <div class="card-body rounded card_anim">
+                        <a href="{{url_for('post', id=post.id)}}" style="text-decoration: none;">
+                            <div class="mb-2">
+                                <h2 class="mb-3 card-text" style="color: #F2C14E;">{{ post.title }}</h2>
+                                <p class="mt-2 card-text border p-2 rounded" style="color: #F2C14E; width: max-content;">التصنيف : {{ post.category }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <p style="color: white;">ليس هناك اي منشورات</p>
+            {% endfor %}
+        </div>
+    </div> <!-- Close profile-card here -->
+</div> <!-- Close d-flex here -->
+</section>
+{% endblock %}

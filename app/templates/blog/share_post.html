@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<section class="mt-5 pt-3" style="background-color: #F2C14E;">
+    <div class="container py-4 mt-5" style="max-width:600px;">
+        <form action="{{url_for('share_post')}}" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="mt-5">
+                <p class="form-label" style="color: #0A3D62;">عنوان المنشور</p>
+                {{ form.title(class="form-control", style="background-color:#0A3D62; color: white;") }}
+            </div>
+            <div class="mb-3">
+                <p class="form-label" style="color: #0A3D62;">محتوى المنشور</p>
+                {{ form.content }}
+
+            </div>
+            <div class="mb-3">
+                <p class="form-label" style="color: #0A3D62;">تصنيف المنشور</p>
+                {{ form.category(class="form-select", style="background-color:#0A3D62; color: white;") }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <a href="/posts" class="btn btn-link mt-3 w-100 mb-5 pb-5">View All Posts</a>
+    </div>
+</section>
+{% endblock %}
