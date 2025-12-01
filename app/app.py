@@ -7,7 +7,7 @@ from datetime import datetime
 
 BASE_DIR = path.abspath(path.dirname(__file__))
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "0123456789"
+app.config['SECRET_KEY'] = "174174916476127361976412786491784971364"
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{BASE_DIR}/instance/site.db"
 #-------------------------------------------------------------
 app_login_manager = LoginManager()
