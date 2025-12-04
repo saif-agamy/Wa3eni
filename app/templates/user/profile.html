@@ -34,9 +34,6 @@
 
         <!-- Action Buttons -->
         <div class="text-center">
-            {% if current_user.id == user.id %}
-            <a href="#" class="btn btn-warning me-2">تعديل</a>
-            {% endif %}
             <a href="{{ url_for('home') }}" class="btn btn-outline-secondary me-2">عودة للرئيسية</a>
             {% if current_user.id == user.id %}
             <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">تسجيل خروج</a>

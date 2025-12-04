@@ -88,6 +88,50 @@
             {% endfor %}
         </div>
     </div>
+    <div class="card mt-3 ms-3" style="width: 300px; background-color: #F2C14E;">
+        <div class="card-body">
+            <div class="card-title" style="color: #0A3D62;">
+                <div class="d-flex justify-content-between">
+                    <h4>activites</h4>
+                    <h4>{{activites_num}}</h4>
+                </div>
+            </div>
+            {% for activity in activites %}
+            <a href="{{url_for('activities')}}" style="text-decoration: none;">
+            <div class="card mt-2 card_anim">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="card-title">
+                        <p style="color: #F2C14E;">{{activity.name}}</p>
+                        </div>
+                    </div>
+                    <div class="card-header">
+                        <p style="color: #F2C14E;">{{activity.describtion}}</p>
+                    </div>
+                    <div class="card-header">
+                        <p style="color: #F2C14E;">{{activity.category}}</p>
+                    </div>
+                    <div class="card-header">
+                        <p style="color: #F2C14E;">{{activity.students | length}} : الطلاب المشاركون</p>
+                    </div>
+                    <div class="card-header">
+                        <a href="{{url_for('finish_activity', id=activity.id)}}" class="btn btn-outline-danger">
+                            Finish
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </a>
+            {% else %}
+            <div class="card-text">
+                <p>there is no activity yet!</p>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{{url_for('add_activity')}}" class="btn btn-primary">
+            Add Activity
+        </a>
+    </div>
     </div>
 </section>
 {% endblock %}

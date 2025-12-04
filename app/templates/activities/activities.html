@@ -1,5 +1,34 @@
 {% extends 'index.html' %}
-{% block title %}{{type}}{% endblock %}
+{% block title %}activities{% endblock %}
 
 {% block content %}
+<section class="mt-5 pt-3" style="background-color: #F2C14E; min-height: 700px;">
+    <div class="container py-5">
+        <h1 class="text-center mb-4" style="color: #0A3D62;">الانشطة و المعسكرات و ورش العمل</h1>
+
+
+        <div class="row g-4 mt-5">
+        <!-- Activity Square -->
+        {% for activity in activities %}
+        <div class="col-md-4 col-sm-6" >
+            <a href="{{url_for('sub_activity', id=activity.id)}}" style="text-decoration: none;">
+                <div class="card activity-card shadow-sm p-3" style="background-color: #0A3D62;">
+                    <h4 class="fw-bold" style="color: #F2C14E;">{{activity.name}}</h4>
+                    {% if current_user.id in activity.students %}
+                    <p class="fw-bold" style="color: green;">مشارك</p>
+                    {% else %}
+                    <p class="fw-bold" style="color: red;">لست مشارك</p>
+                    {% endif %}
+                    <p class=" mb-2" style="color: #F2C14E;">{{activity.describtion}}</p>
+                    <span class="badge bg-success mt-1">{{activity.category}}</span>
+                </div>
+            </a>
+        </div>
+        {% else %}
+        <p class="text-center mb-4">لا توجد اي نشاطات او معسكرات او ورش عمل الان عد لاحقا</p>
+        {% endfor %}
+
+        </div>
+    </div>
+</section>
 {% endblock %}

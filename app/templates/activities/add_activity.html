@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block title %}add activity{% endblock %}
+
+{% block content %}
+<section class="mt-5 pt-3" style="background-color: #F2C14E; min-height: 700px;">
+    <div class="container py-4 mt-5" style="max-width:600px;">
+        <form action="{{url_for('add_activity')}}" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="mt-5">
+                <p class="form-label" style="color: #0A3D62;">{{form.name.label}}</p>
+                {{ form.name(class="form-control", style="background-color:#0A3D62; color: white;") }}
+            </div>
+            <div class="mb-3">
+                <p class="form-label" style="color: #0A3D62;">{{form.describtion.label}}</p>
+                {{ form.describtion }}
+
+            </div>
+            <div class="mb-3">
+                <p class="form-label" style="color: #0A3D62;">{{form.category.label}}</p>
+                {{ form.category(class="form-select", style="background-color:#0A3D62; color: white;") }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">انشاء</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

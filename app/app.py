@@ -1,7 +1,7 @@
 from flask import Flask,render_template,redirect, url_for, request
-from forms import login_form, signup_form, post_form
+from forms import login_form, signup_form, post_form, activity_form
 from flask_login import LoginManager,login_user, logout_user, login_required, current_user
-from models import db, User, Post, Upvote
+from models import db, User, Post, Upvote, activity
 from os import path
 from datetime import datetime
 
@@ -27,20 +27,28 @@ def home():
 
 @app.route('/awareness/<type>/')
 def awareness(type):
+    a_type = ""
     pic_name = ""
     if type=='علمي' :
         pic_name = "Scientific"
+        a_type = "Scientific"
     elif type=='بيئي' :
         pic_name = "environmental"
+        a_type = "environmental"
     elif type=='رقمي' :
         pic_name = "Digital"
+        a_type = "Digital"
     elif type=='اجتماعي' :
         pic_name = "Social"
+        a_type = "Social"
     elif type=='ثقافي' :
         pic_name = "Cultural"
+        a_type = "Cultural"
     elif type=='رياضي' :
         pic_name = "Sports"
-    return render_template('Home/awareness.html', type=type, current_user=current_user, pic=pic_name)
+        a_type = "Sports"
+
+    return render_template('Home/awareness.html', type=type, current_user=current_user, pic=pic_name, a_type=a_type)
 
 @app.route('/progress/')
 def progress():
@@ -145,7 +153,8 @@ def post(id):
 def delete_post(id):
     post = Post.query.get(id)
     user = current_user
-    if user.id == post.author_id :
+    admin = User.query.filter_by(username=admin, password=admin).first()
+    if user.id == post.author_id or user.id == admin.id :
         db.session.delete(post)
         db.session.commit()
     return redirect(url_for('blog'))
@@ -222,7 +231,11 @@ def admin():
 
     posts = Post.query.all()
     posts_num = Post.query.count()
-    return render_template('admin/admin.html', users=users, users_num=users_num, posts=posts, posts_num=posts_num)
+
+    activites = activity.query.all()
+    activites_num = activity.query.count()
+
+    return render_template('admin/admin.html', users=users, users_num=users_num, posts=posts, posts_num=posts_num, activites=activites , activites_num=activites_num)
 
 @app.route('/admin/ban/<int:id>')
 @login_required
@@ -236,6 +249,68 @@ def ban_user(id):
     db.session.commit()
 
     return redirect(url_for('admin'))
+
+@app.route('/admin/add_activity', methods=['GET','POST'])
+@login_required
+def add_activity():
+    form = activity_form()
+    if form.validate_on_submit():
+        act = activity(
+            name = form.name.data,
+            describtion = form.describtion.data,
+            category = form.category.data,
+        )
+
+        db.session.add(act)
+        db.session.commit()
+
+        return redirect(url_for('admin'))
+    
+    return render_template('activities/add_activity.html', form=form)
+
+@app.route('/admin/activity/delete/<int:id>/')
+@login_required
+def finish_activity(id):
+    act = activity.query.get(id)
+    db.session.delete(act)
+    db.session.commit()
+    return redirect(url_for('admin'))
+
+@app.route('/activities/')
+@login_required
+def activities():
+    activities = activity.query.all()
+    
+    return render_template('activities/activities.html', activities=activities)
+
+@app.route('/activity/subscripe/<int:id>/')
+@login_required
+def sub_activity(id):
+    act = activity.query.get(id)
+    user = current_user
+    
+    if user.id not in act.students :
+        students = act.students or []
+        students.append(current_user.id)
+        act.students = students
+        
+        # Tell SQLAlchemy the attribute changed
+        from sqlalchemy.orm.attributes import flag_modified
+        flag_modified(act, "students")
+
+        db.session.commit()
+    else :
+        students = act.students or []
+        students.remove(current_user.id)
+        act.students = students
+        
+        # Tell SQLAlchemy the attribute changed
+        from sqlalchemy.orm.attributes import flag_modified
+        flag_modified(act, "students")
+
+        db.session.commit()
+
+    return redirect(url_for('activities', current_user=current_user))
 
 if __name__ == "__main__":
     app.run(debug=True,port=8000)

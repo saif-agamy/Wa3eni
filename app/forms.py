@@ -3,24 +3,24 @@ from wtforms import IntegerField, StringField, EmailField, PasswordField, Select
 from wtforms.validators import DataRequired, Length, EqualTo, NumberRange, Email
 
 class signup_form(FlaskForm):
-    username = StringField('username', validators=[DataRequired(), Length(2,16,'username must be between 2 <-> 16')])
-    age = IntegerField('age', validators=[DataRequired(), NumberRange(10,90)])
-    pos = SelectField('position',choices=[('student','Student'),('teacher','Teacher')], validators=[DataRequired()])
-    user_email = EmailField('email', validators=[DataRequired(), Email()])
-    phone = IntegerField('phone number', validators=[DataRequired()])
-    password = PasswordField('password', validators=[DataRequired()])
-    conf_password = PasswordField('confirm password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Sign-up')
+    username = StringField('اسم المستخدم', validators=[DataRequired(), Length(2,16,'الاسم يجب ان يتكون من حرفين الى 16 حرف')])
+    age = IntegerField('السن', validators=[DataRequired(), NumberRange(10,90)])
+    pos = SelectField('المنصب',choices=[('طالب','طالبة'),('معلم','معلمة')], validators=[DataRequired()])
+    user_email = EmailField('البريد الالكتروني', validators=[DataRequired(), Email()])
+    phone = IntegerField('رقم الهاتف', validators=[DataRequired()])
+    password = PasswordField('كلمة السر', validators=[DataRequired()])
+    conf_password = PasswordField('تأكيد كلمة السر', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('انشئ الحساب')
 
 class login_form(FlaskForm):
-    username = StringField('username', validators=[DataRequired()])
-    password = PasswordField('password', validators=[DataRequired()])
-    submit = SubmitField('Login')
+    username = StringField('الاسم', validators=[DataRequired()])
+    password = PasswordField('كلمة السر', validators=[DataRequired()])
+    submit = SubmitField('تسجيل الدخول')
 
 class post_form(FlaskForm):
-    category = SelectField('category', choices=[('علمي'),('فني'),('ثقافي'),('رياضي'),('اجتماعي')], validators=[DataRequired()])
-    title = StringField('title', validators=[DataRequired(), Length(10,100)])
-    content = TextAreaField('Content',
+    category = SelectField('التصنيف', choices=[('علمي'),('فني'),('ثقافي'),('رياضي'),('اجتماعي')], validators=[DataRequired()])
+    title = StringField('العنوان', validators=[DataRequired(), Length(10,100)])
+    content = TextAreaField('المحتوى',
         validators=[DataRequired()],
         render_kw={
             "class": "form-control",
@@ -28,3 +28,15 @@ class post_form(FlaskForm):
             "style": "background-color:#0A3D62; color:white; min-height:200px;"
         }
     )
+
+class activity_form(FlaskForm):
+    name = StringField('عنوان النشاط', validators=[Length(2,50),DataRequired('يجب وضع عنوان')])
+    describtion = StringField('محتوى النشاط',
+        validators=[Length(2,100),DataRequired('يجب وضع محتوى')],
+        render_kw={
+            "class": "form-control",
+            "rows": 10,
+            "style": "background-color:#0A3D62; color:white;"
+        }
+    )
+    category = SelectField('تصنيف النشاط', choices=('علمي','ثقافي','فني','رياضي','اجتماعي','بيئي','تكنولوجي','اخلاقي','معسكر','ورشة عمل'),validators=[DataRequired('يجب اختيار تصنيف')])

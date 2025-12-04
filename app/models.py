@@ -35,3 +35,10 @@ class Upvote(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey('post.id',ondelete='CASCADE'))
 
     __table_args__ = (db.UniqueConstraint('user_id', 'post_id'),)
+
+class activity(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    describtion = db.Column(db.String, nullable=False)
+    category = db.Column(db.String, nullable=False)
+    students = db.Column(MutableList.as_mutable(db.JSON), nullable=True)
