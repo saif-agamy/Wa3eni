@@ -235,7 +235,10 @@ def admin():
     activites = activity.query.all()
     activites_num = activity.query.count()
 
-    return render_template('admin/admin.html', users=users, users_num=users_num, posts=posts, posts_num=posts_num, activites=activites , activites_num=activites_num)
+    if current_user.id == admin.id :
+        return render_template('admin/admin.html', users=users, users_num=users_num, posts=posts, posts_num=posts_num, activites=activites , activites_num=activites_num)
+    else :
+        return redirect(url_for('home'))
 
 @app.route('/admin/ban/<int:id>')
 @login_required

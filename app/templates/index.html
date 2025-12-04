@@ -64,6 +64,11 @@
                         </li>
 
                         {% if current_user.is_authenticated %}
+                        {% if current_user.username == "admin" %}
+                        <li class="nav-item">
+                            <a class="btn btn-warning nav-link border-light" href="{{url_for('admin')}}">ادارة</a>
+                        </li>
+                        {% endif %}
                         <li class="nav-item d-flex align-items-center ms-3">
                             <a class="nav-link p-0" href="{{url_for('profile', id=current_user.id)}}">
                                 <img src="{{ url_for('static', filename=current_user.img_url) }}"
