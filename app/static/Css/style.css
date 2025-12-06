@@ -139,3 +139,40 @@
 .activity-card:hover {
     transform: scale(1.03);
 }
+
+  .slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .slider-track {
+    display: flex;
+    width: calc(250px * 14); /* image width × total images */
+    animation: scroll 22s linear infinite;
+  }
+
+  .slider img {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+    margin: 0 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  @keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .slider-track {
+      width: calc(180px * 14);
+    }
+    .slider img {
+      width: 180px;
+      height: 110px;
+    }
+  }
